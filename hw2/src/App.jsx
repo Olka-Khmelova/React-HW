@@ -1,11 +1,14 @@
 import './App.css';
+import Timer from './components/Timer/Timer';
+import Wrapper from './components/Wrapper/Wrapper';
 
 function App() {
   return (
+    <Wrapper>
     <div className="App">
-      <h1>HW2</h1>
-      <h2>Let's goooooo</h2>
+      <Timer />
     </div>
+    </Wrapper>
   );
 }
 

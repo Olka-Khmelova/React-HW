@@ -1,0 +1,10 @@
+.list{
+    display: block;
+    margin: 15px auto;
+    padding: 0;
+    list-style: none;
+    width: 300px;
+    max-height: 300px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
