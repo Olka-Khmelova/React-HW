@@ -1,0 +1,19 @@
+.btn {
+    height: 50px;
+    padding: 5px;
+    width: 44%;
+    background-color: #fff;
+    color: #000;
+    font-size: 1.5em;
+    font-weight: bold;
+    border: 1px solid #000;
+    cursor: pointer;
+    margin: 45px 10px 0px;
+}
+.btn:hover {
+   background-color: #e5e3e3;   
+}
+.upload_btn {
+    width: 70%;
+    height: 60px;
+}
