@@ -18,3 +18,11 @@
 .input_title {
     margin: 10px 0px 0px;
 }
+span {
+    color: red;
+    display: none;
+    text-align: start;
+}
+input:invalid ~ span {
+    display: block;
+}

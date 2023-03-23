@@ -4,8 +4,7 @@ import "./MainContainer.css"
 const MainContainer = ({ children }) => {
     return (
         <div className="input_container">
-            <h1>Title</h1>
-            <form className="form">
+            <form className="form" validate="true">
                 {children}
             </form>
         </div>
