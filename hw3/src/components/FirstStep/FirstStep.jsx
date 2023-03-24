@@ -6,17 +6,18 @@ const inputs = [
     {id: 1,
     name: "Name",
     type: "text",
-    errorMessage: "Username should be 3-16 characters and shouldn't include any special character!",
-    pattern: "^[a-zA-Z]*$",
+    // errorMessage: "Username should be 3-16 characters and shouldn't include any special character!",
+    pattern: "^[A-Za-z]{2,16}$",
     required: true,
 
 },
 {id: 2,
     name: "Surname",
     type: "text",
-    errorMessage: "Surname should be 3-16 characters and shouldn't include any special character!",
-    pattern: "^[a-zA-Z]*$",
+    // errorMessage: "Surname should be 3-16 characters and shouldn't include any special character!",
+    pattern: "^[A-Za-z]{2,16}$",
     required: true,
+
 },
 {id: 3,
     name: "Email",
@@ -24,6 +25,7 @@ const inputs = [
     errorMessage: "It should be valid email address!",
     // pattern: "^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$",
     required: true,
+
 }
 ]
 
@@ -33,7 +35,8 @@ const FirstStep = () => {
     return (
         inputs.map(input => <Input key={input.id}
             {...input}
-            value={state[input.name.toLowerCase()] } />)
+            value={state[input.name.toLowerCase()] }
+            />)
     )
 }
 

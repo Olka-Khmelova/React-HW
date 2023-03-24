@@ -6,16 +6,19 @@ const inputs = [
     {id: 1,
     name: "City",
     type: "text",
+    required: true,
 
 },
 {id: 2,
     name: "Street",
     type: "text",
+    required: true,
 
 },
 {id: 3,
     name: "Building",
     type: "text",
+    required: true,
 }
 ]
 const SecondStep = () => {

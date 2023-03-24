@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from '../../components/Main';
 import "./MainContainer.css"
 
-const MainContainer = ({ children }) => {
+const MainContainer = ({validate, onSubmit, children }) => {
+    const {state} = useContext(Context);
     return (
-        <div className="input_container">
-            <form className="form" validate="true">
+            <form className="input_container" validate={validate} onSubmit={onSubmit}>
                 {children}
             </form>
-        </div>
     )
 }
 

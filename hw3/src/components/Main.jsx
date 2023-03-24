@@ -20,6 +20,8 @@ const initialState = {
     password: '',
     confirm: '',
     formPages: 0,
+
+
 };
 
 const reducer = (state, action) => {
@@ -46,8 +48,16 @@ const Main = () => {
 
     return (
         <Context.Provider value={{ state, dispatch }}>
-            <MainContainer>
-                <InputContainer>
+            <MainContainer 
+            validate="true" 
+            onSubmit={(e) => {
+                e.preventDefault();  
+                dispatch({
+                type: 'STEP-BTN',
+                payload: {formPages: state.formPages + 1}
+                        
+            })}}>
+                 <InputContainer>
                     {state.formPages !== steps.length-1 ? <h1>Step {state.formPages + 1}/{steps.length - 1}</h1> : <h1>Thank you for registration!</h1>}
                     {steps[state.formPages]}
                 </InputContainer>
@@ -55,29 +65,22 @@ const Main = () => {
                 <Button 
                     text="Previous" 
                     type="button" 
+                        
                     onClick={ (e) => {
                         // e.preventDefault();
                         dispatch({
                             type: 'STEP-BTN',
                             payload: {formPages: state.formPages - 1}
-                            
+                                
                         })
                         }
                     }
                     />}
                 {state.formPages !== steps.length-1 && <Button 
                     text={state.formPages !== steps.length - 2 ? "Next" : "Submit"} 
-                    type="button"
-                    onClick={ (e) => {
-                        e.preventDefault();
-                        dispatch({
-                            type: 'STEP-BTN',
-                            payload: {formPages: state.formPages + 1}
-                            
-                        })
-                        }
-                }/>
-            }
+                    type="submit"
+                    disabled={ state.password === state.confirm  ? false : true } />
+                }
             </MainContainer>
         </Context.Provider>
     )
