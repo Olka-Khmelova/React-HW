@@ -1,0 +1,12 @@
+.default_avatar_img {
+    width: 100px;
+    cursor: pointer;
+}
+.default_avatar_img:hover {
+    width: 110px;
+    background-color: blue;
+    border-radius: 50%;
+}
+.default_img {
+    margin-top: 20px;
+}

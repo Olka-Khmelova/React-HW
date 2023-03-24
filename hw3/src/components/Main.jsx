@@ -19,6 +19,7 @@ const initialState = {
     building: '',
     password: '',
     confirm: '',
+    avatar: '',
     formPages: 0,
 
 
@@ -27,6 +28,11 @@ const initialState = {
 const reducer = (state, action) => {
     switch (action.type) {
         case 'DATA-INPUT':
+            return {
+                ...state,
+                ...action.payload
+            }
+            case 'AVATAR-INPUT':
             return {
                 ...state,
                 ...action.payload

@@ -7,3 +7,10 @@
     text-align: left;
     /* text-transform: capitalize; */
 }
+.avatar_img {
+    width: 130px;
+    border-radius: 50%;
+}
+.info_item_accent{
+    font-weight: bolder;
+}

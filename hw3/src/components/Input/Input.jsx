@@ -13,12 +13,21 @@ const Input = ({...input}) => {
     return (
         <>
         <label className="input_label"> 
-            <h2 className="input_title">{input.name}</h2>
+            <h2 className="input_title">{input.name} {state.formPages === 2 && state.avatar && '✓'}</h2>
             <input 
             type={input.type} 
             value={input.value}
             className="input_form"
-            onChange={ (e) => {
+            accept={input.accept}
+            onChange={ input.name.toLowerCase() === 'avatar' ? (e) => {
+                dispatch({
+                    type: 'AVATAR-INPUT',
+                    payload: {[input.name.toLowerCase()]: URL.createObjectURL(e.target.files[0]),}
+                })
+                handleFocus()
+                } 
+                : 
+                (e) => {
                 dispatch({
                     type: 'DATA-INPUT',
                     payload: {[input.name.toLowerCase()]: e.currentTarget.value,}
