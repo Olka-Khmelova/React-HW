@@ -13,7 +13,7 @@ const Input = ({children,...input}) => {
     return (
         <>
         <label className="input_label"> 
-            <h2 className="input_title">{input.name} {state.formPages === 2 && state.avatar && '✓'}</h2>
+            <h2 className="input_title">{input.name} {state.formPages === 2 && state.avatar && '✓ chosen'}</h2>
             <input 
             type={input.type} 
             value={input.value}

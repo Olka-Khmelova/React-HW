@@ -8,8 +8,8 @@ const inputs = [
     {id: 1,
     name: "Avatar",
     type: "file",
-    accept: "image/png, image/jpeg"
-
+    accept: "image/png, image/jpeg",
+    required: false,
 },
 ]
 const defaulAvatars = ['/default_avatar/dzobs.png', '/default_avatar/funny_man.png', '/default_avatar/freak.png', '/default_avatar/girl.png', '/default_avatar/hacker.png', '/default_avatar/pirat.png', '/default_avatar/rudy.png', '/default_avatar/monster.png', '/default_avatar/nice.png']

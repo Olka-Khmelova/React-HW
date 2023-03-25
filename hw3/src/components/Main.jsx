@@ -7,6 +7,7 @@ import ThirdStep from "./ThirdStep/ThirdStep";
 import ForthStep from "./ForthStep/ForthStep";
 import FifthStep from "./FifthStep/FifthStep"
 import InputContainer from "../containers/InputContainer/InputContainer";
+import Wrapper from "./Wrapper/Wrapper";
 
 export const Context = React.createContext(null);
 const steps = [<FirstStep />, <SecondStep />, <ThirdStep />, <ForthStep />, <FifthStep />]
@@ -21,7 +22,7 @@ const initialState = {
     confirm: '',
     avatar: '',
     formPages: 0,
-
+    theme: 'ligth',
 
 };
 
@@ -43,6 +44,11 @@ const reducer = (state, action) => {
                 ...state,
                 ...action.payload
             }
+            case 'THEME-INPUT':
+            return {
+                ...state,
+                ...action.payload
+            }
 
         default:
             return state;
@@ -54,40 +60,51 @@ const Main = () => {
 
     return (
         <Context.Provider value={{ state, dispatch }}>
-            <MainContainer 
-            validate="true" 
-            onSubmit={(e) => {
-                e.preventDefault();  
-                dispatch({
-                type: 'STEP-BTN',
-                payload: {formPages: state.formPages + 1}
-                        
-            })}}>
-                 <InputContainer>
-                    {state.formPages !== steps.length-1 ? <h1>Step {state.formPages + 1}/{steps.length - 1}</h1> : <h1>Thank you for registration!</h1>}
-                    {steps[state.formPages]}
-                </InputContainer>
-                {state.formPages !== 0 && state.formPages !== steps.length-1 && 
-                <Button 
-                    text="Previous" 
-                    type="button" 
-                        
-                    onClick={ (e) => {
-                        // e.preventDefault();
-                        dispatch({
-                            type: 'STEP-BTN',
-                            payload: {formPages: state.formPages - 1}
-                                
-                        })
+            <Wrapper className={state.theme}>
+                <Button className="mode-btn" text={state.theme === "ligth" ? "Switch to dark mode" : "Switch to ligth mode"} 
+                        type="button" onClick={(e) => {
+                            e.preventDefault();
+                            dispatch({
+                                type: 'THEME-INPUT',
+                                payload: {theme: state.theme === 'ligth' ? 'dark' : 'ligth'}
+                                    
+                            })
+                            }}/>
+                <MainContainer 
+                validate="true" 
+                onSubmit={(e) => {
+                    e.preventDefault();  
+                    dispatch({
+                    type: 'STEP-BTN',
+                    payload: {formPages: state.formPages + 1}
+                            
+                })}}>
+                    <InputContainer>
+                        {state.formPages !== steps.length-1 ? <h1>Step {state.formPages + 1}/{steps.length - 1}</h1> : <h1>Thank you for registration!</h1>}
+                        {steps[state.formPages]}
+                    </InputContainer>
+                    {state.formPages !== 0 && state.formPages !== steps.length-1 && 
+                    <Button 
+                        text="Previous" 
+                        type="button" 
+                            
+                        onClick={ (e) => {
+                            // e.preventDefault();
+                            dispatch({
+                                type: 'STEP-BTN',
+                                payload: {formPages: state.formPages - 1}
+                                    
+                            })
+                            }
                         }
+                        />}
+                    {state.formPages !== steps.length-1 && <Button 
+                        text={state.formPages !== steps.length - 2 ? "Next" : "Submit"} 
+                        type="submit"
+                        disabled={ state.formPages === 3 && state.password !== state.confirm  ? true : false} />
                     }
-                    />}
-                {state.formPages !== steps.length-1 && <Button 
-                    text={state.formPages !== steps.length - 2 ? "Next" : "Submit"} 
-                    type="submit"
-                    disabled={ state.password === state.confirm  ? false : true } />
-                }
-            </MainContainer>
+                </MainContainer>
+            </Wrapper>
         </Context.Provider>
     )
 }
