@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Context } from '../Main';
 import "./Input.css"
 
-const Input = ({...input}) => {
+const Input = ({children,...input}) => {
     const {state, dispatch} = useContext(Context);
     const [focused, setFocused] = useState(false);
     
@@ -40,6 +40,7 @@ const Input = ({...input}) => {
             required={input.required}
             onBlur={handleFocus}
             />
+             {children}
             <span className="input-error">{input.errorMessage}
             </span>
         </label>
